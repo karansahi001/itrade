@@ -8,6 +8,8 @@ import './App.css';
 import Homepage from './pages/Homepage/Homepage';
 import SignIn from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
+import TrendingStocks from "./pages/TrendingStocks/TrendingStocks";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
 
@@ -37,6 +39,10 @@ function App() {
       element: <Homepage />,
     },
     {
+      path: "/trending",
+      element: <TrendingStocks />,
+    },
+    {
       path: "/signin",
       element: <SignIn />,
     },
@@ -48,6 +54,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Navbar />
       <RouterProvider router={router} />
     </ThemeProvider>
   );

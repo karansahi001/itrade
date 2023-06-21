@@ -21,7 +21,7 @@ const Homepage = () => {
 
   return (
     <main>
-      <Navbar />
+     <h1>Home</h1>
     </main>
   )
 }

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { auth } from '../../config/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { updateNav } from '../../redux/navSlice';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -31,6 +33,9 @@ export default function SignUp() {
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const dispatch = useDispatch();
+
+  dispatch(updateNav("signup"));
 
   const handleSubmit = async (e) => {
     e.preventDefault();

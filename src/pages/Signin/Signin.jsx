@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { auth } from '../../config/firebase'
+import { useDispatch } from 'react-redux';
+import { updateNav } from '../../redux/navSlice';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
@@ -33,6 +35,9 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const dispatch = useDispatch();
+
+  dispatch(updateNav("signin"));
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,4 +1,3 @@
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -6,8 +5,8 @@ import {
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
 import Homepage from './pages/Homepage/Homepage';
-import SignIn from "./components/Signin/Signin";
-import SignUp from "./components/Signup/Signup";
+import SignIn from "./pages/Signin/Signin";
+import SignUp from "./pages/Signup/Signup";
 import TrendingStocks from "./pages/TrendingStocks/TrendingStocks";
 import Navbar from "./components/Navbar/Navbar";
 

@@ -1,11 +1,15 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import Auth from '../../components/Auth/Auth';
-import Navbar from '../../components/Navbar/Navbar';
-import { auth } from '../../config/firebase';
+// import axios from 'axios'
+// import React, { useEffect } from 'react'
+// import { auth } from '../../config/firebase';
+import { useDispatch } from 'react-redux';
+import { updateNav } from '../../redux/navSlice';
 
 const Homepage = () => {
-  const apiUrl = process.env.REACT_APP_API_URL;
+  // const apiUrl = process.env.REACT_APP_API_URL;
+  const dispatch = useDispatch();
+
+  dispatch(updateNav("home"));
+  
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {

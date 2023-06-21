@@ -4,3 +4,7 @@
   font-weight: 500;
   box-sizing: border-box;
 }
+
+a:link{
+  text-decoration: none !important;
+}

@@ -1,0 +1,16 @@
+.main-news__card{
+
+    &:hover{
+        border: 1px solid #dee2e6 !important;
+    }
+
+}
+
+.news-card{
+
+    &__image{
+    width: 7rem;
+    height: 6rem;
+    object-fit: cover;
+    }
+}

@@ -3,7 +3,6 @@
 // import { auth } from '../../config/firebase';
 import { useDispatch } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
-import cardStocks from '../../components/CardStocks/CardStocks'
 
 const Homepage = () => {
   // const apiUrl = process.env.REACT_APP_API_URL;

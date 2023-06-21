@@ -9,6 +9,7 @@ import SignIn from "./pages/Signin/Signin";
 import SignUp from "./pages/Signup/Signup";
 import TrendingStocks from "./pages/TrendingStocks/TrendingStocks";
 import Navbar from "./components/Navbar/Navbar";
+import SingleStock from "./pages/SingleStock/SingleStock";
 
 function App() {
 
@@ -48,6 +49,10 @@ function App() {
     {
       path: "/signup",
       element: <SignUp />,
+    },
+    {
+      path: "/stocks/:ticker",
+      element: <SingleStock />,
     },
   ]);
 

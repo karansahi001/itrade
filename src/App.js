@@ -6,14 +6,28 @@ import {
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
 import Homepage from './pages/Homepage/Homepage';
+import SignIn from "./components/Signin/Signin";
+import SignUp from "./components/Signup/Signup";
 
 function App() {
 
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#fafafa",
+        main: "#145952",
       },
+      secondary: {
+        main: "#41A693",
+      },
+      info: {
+        main: "#91D9CC",
+      },
+      success: {
+        main: "#91D9CC",
+      },
+      danger: {
+        main: "#DE3163",
+      }
     },
   });
 
@@ -21,6 +35,14 @@ function App() {
     {
       path: "/",
       element: <Homepage />,
+    },
+    {
+      path: "/signin",
+      element: <SignIn />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
     },
   ]);
 

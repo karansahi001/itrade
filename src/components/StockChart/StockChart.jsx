@@ -5,26 +5,30 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'
 
 const StockChart = ({ ticker }) => {
-
   const [pricedata, setPricedata] = useState([]);
   const [days, setDays] = useState(1);
   const apiUrl = process.env.REACT_APP_API_URL;
-// try adding timestamps from and to , to check the bottom bar of the chart
-  const testApi = `https://finnhub.io/api/v1/stock/candle?symbol=${ticker}&resolution=30&from=1679476980&to=1679649780&token=ci6vaa1r01quivobtnh0ci6vaa1r01quivobtnhg`
-
-  // `${apiUrl}/stocks-chart/${ticker}`
-  const fetch = async () => {
-    const { data } = await axios.get(testApi)
-    setPricedata(data);
-  }
-
+  
   useEffect(() => {
-    fetch()
-  }, [days])
-  console.log(pricedata)
+    const fetch = async () => {
+      try{
+        const { data } = await axios.get(`${apiUrl}/stocks-chartdata/${ticker}`)
+        setPricedata(data);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    const interval = setInterval(() => {
+      // Code to be executed every 5 minutes
+      // fetch();
+    }, 5 * 60 * 1000); // 5 minutes i
+    // fetch();
+    return () => clearInterval(interval);
+  }, [apiUrl, ticker])
 
   return (
-    <div className="container mt-5" style={{ width: "68vw" }}>
+    // style={{ width: "68vw" }}
+    <div className="container mt-5" >
       <div className="row text-center">
         {/* <div className="col-12 mb-5">
           {cdays.map((cday) => {
@@ -39,19 +43,17 @@ const StockChart = ({ ticker }) => {
             <Line
               data={{
                 labels: (pricedata?.t?.map((timestamp) => {
-                  let date = new Date(timestamp);
-                  let time = date.getHours() > 12
-                              ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                              : `${date.getHours()}:${date.getMinutes()} AM`;
-                  return days === 1 ? time : new Date(date).toLocaleDateString();  
+                  let date = new Date(timestamp * 1000);
+                  let time = date.getHours() > 12 ? `${date.getHours() - 12}:${date.getMinutes()} PM` : `${date.getHours()}:${date.getMinutes()} AM`;
+                  return days === 1 ? time : new Date(date).toLocaleDateString(); 
                 })
                 ),
-
                 datasets: [
                   {
                     label: `${ticker.toUpperCase()} Prices in USD`,
+                    fill: 'none',
                     data: pricedata?.c?.map((price) => price),
-                    backgroundColor: "rgb(145, 217, 204)",
+                    backgroundColor: "#41A693",
                     borderColor: "#41A693",
                   }
                 ]
@@ -70,7 +72,7 @@ const StockChart = ({ ticker }) => {
                     propagate: false,
                   },
                   title: {
-                    display: true,
+                    display: false,
                     text: (ctx) => 'Fill: ' + ctx.chart.data.datasets[0].fill
                   }
                 },

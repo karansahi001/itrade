@@ -1,0 +1,23 @@
+.single-stock{
+    margin: 1rem 2rem 2rem 2.3rem;
+    &__head{
+        width: 10rem;
+        padding: 1rem 2rem;
+        margin-bottom: 1rem !important;
+    }
+
+}
+.chartgraph{
+    width: 65%;
+
+    &-container{
+        &__price{
+            padding: 2rem 0 0 2rem;
+
+        }
+        &__lead{
+            margin: 0.5rem 0 0 2rem;
+            font-size: 1rem;
+        }
+    }
+}

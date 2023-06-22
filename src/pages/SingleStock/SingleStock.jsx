@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import StockChart from '../../components/StockChart/StockChart';
 
 const SingleStock = () => {
   const [stockData, setStockData] = useState([]);
@@ -24,6 +25,7 @@ const SingleStock = () => {
 
   return (
     <main>
+      <StockChart ticker={ticker} />
 
     </main>
   )

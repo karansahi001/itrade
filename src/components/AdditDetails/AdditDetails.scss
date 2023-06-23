@@ -1,0 +1,28 @@
+.market-details {
+    margin-left: 2rem;
+    margin-top: 3rem;
+}
+
+.market-container {
+    width: 67%;
+    display: flex;
+
+}
+
+.market-col {
+    width: 45%;
+    line-height: 2.3rem;
+    padding: 1.3rem 0.7rem 1rem 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    
+    &__li {
+        list-style-type: none;
+    }
+    
+    &__la {
+        text-align: right;
+        list-style-type: none;
+        font-weight: 200;
+    }
+}

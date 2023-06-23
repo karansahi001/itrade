@@ -49,9 +49,9 @@ const TrendingStocks = () => {
             <thead className="table-striped text-center text-info">
               <tr>
                 <th className="text-start" scope="col">Ticker</th>
-                <th scope="col">Current Price</th>
                 <th scope="col">24h Change</th>
                 <th scope="col">% Change</th>
+                <th scope="col">Current Price</th>
               </tr>
             </thead>
             <tbody className="justify-content-center align-items-center" role='button'>

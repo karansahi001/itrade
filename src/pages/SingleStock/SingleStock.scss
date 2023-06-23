@@ -1,14 +1,33 @@
 .single-stock{
     margin: 1rem 2rem 2rem 2.3rem;
-    &__head{
-        width: 10rem;
-        padding: 1rem 2rem;
-        margin-bottom: 1rem !important;
+    
+}
+
+.single-section{
+    padding: 1rem 2rem;
+    margin-bottom: 1rem !important;
+    display: flex;
+    align-items: flex-end;
+
+    &__icon{
+        width: 3rem;
+        margin-right: 0.8rem;
+        border-radius: 7rem;
     }
 
+    &__ticker{
+        padding-right: 1rem;
+        border-right: 2px solid rgb(222, 222, 222);
+    }
+
+    &__name{
+        padding-left: 1rem;
+    }
 }
+
 .chartgraph{
     width: 65%;
+    margin-left: 2rem;
 
     &-container{
         &__price{
@@ -21,3 +40,4 @@
         }
     }
 }
+

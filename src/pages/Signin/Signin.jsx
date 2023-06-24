@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from '../../config/firebase'
 import { useDispatch } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
@@ -16,6 +16,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+
 
 function Copyright(props) {
   return (
@@ -37,7 +38,10 @@ export default function SignIn() {
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
 
-  dispatch(updateNav("signin"));
+  useEffect(() => {
+    dispatch(updateNav("signin"));
+
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,8 +49,9 @@ export default function SignIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        // dispatch(updateUser(auth.currentUser.email));
         navigate("/");
-        console.log(user);
+        // console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -54,7 +59,7 @@ export default function SignIn() {
         console.log(errorCode, errorMessage)
       });
   };
-  console.log(auth?.currentUser?.email)
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

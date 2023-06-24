@@ -6,9 +6,7 @@ import { Paper, Typography } from '@mui/material';
 import TrendingList from '../../components/TrendingList/TrendingList';
 import NewsCard from '../../components/NewsCard/NewsCard';
 import './TrendingStocks.scss'
-
-
-// import { auth } from '../../config/firebase';
+import { auth } from '../../config/firebase';
 
 const TrendingStocks = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -16,9 +14,9 @@ const TrendingStocks = () => {
   const [newsData, setNewsData] = useState([]);
 
   const dispatch = useDispatch();
-  dispatch(updateNav("trending"));
-
+  
   useEffect(() => {
+    dispatch(updateNav("trending"));
     const fetchData = async () => {
       try {
         const response = await axios.get(`${apiUrl}/stocks`)
@@ -38,6 +36,9 @@ const TrendingStocks = () => {
     fetchData();
     fetchNewsData();
   }, [apiUrl])
+
+  // console.log(auth?.currentUser)
+
 
   return (
     <main className="trending">
@@ -77,11 +78,11 @@ const TrendingStocks = () => {
           {
             newsData.map((article, index) => {
               return (
-              <a key={index} href={article.url} target="_blank" className="news-list__item" rel="noreferrer">
+              <a key={index} href={article.article_url} target="_blank" className="news-list__item" rel="noreferrer">
                 <NewsCard 
-                  image={article.banner_image}
+                  image={article.image_url}
                   title={article.title}
-                  source={article.source}
+                  source={article?.publisher?.name}
                 />
               </a>
               )

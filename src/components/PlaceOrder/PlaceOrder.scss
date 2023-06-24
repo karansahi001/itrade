@@ -1,0 +1,42 @@
+@use '../../styles/partials/variables' as *;
+
+.place-order-sec{
+    margin-top: -2rem;
+
+    &__head{
+        margin-left: 1.5rem;
+    }
+}
+
+.place-order{
+    width: 28rem;
+    margin-left: 1.5rem;
+    margin-right: 2rem;
+    padding: 2rem 2rem;
+
+    &-num{
+        display: flex;
+        align-items: center;
+
+        &__text{
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+
+        }
+
+        &__input{
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: 300;
+            &:focus{
+                outline-color: $secondary;
+            }
+
+        }
+    }
+
+    &__cost{
+        margin-top: 2rem;
+    }
+    
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from '../../config/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
@@ -35,7 +35,9 @@ export default function SignUp() {
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
 
-  dispatch(updateNav("signup"));
+  useEffect(() => {
+    dispatch(updateNav("signup"));
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();

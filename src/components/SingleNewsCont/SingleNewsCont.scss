@@ -1,0 +1,37 @@
+.news-article{
+    display: flex;
+    padding: 0.65rem 0.4rem;
+    margin-bottom: 0.4rem;
+
+    &:hover{
+        border-radius: 0.5rem;
+        border: 1.5px solid #eaeaea;
+    }
+
+    &-img{
+        width: 20%;
+        margin-right: 1rem;
+
+        &__image{
+            width: 10rem;
+            height: 6.5rem;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+    }
+
+    &-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__title{
+            font-size: 1.2rem;
+
+        }
+
+        &__source{
+            // margin-top: 1.7rem;
+            margin-bottom: 0;
+        }
+    }
+}

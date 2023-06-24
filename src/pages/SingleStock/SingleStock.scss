@@ -26,10 +26,11 @@
 }
 
 .chartgraph{
-    width: 65%;
     margin-left: 2rem;
-
+    display: flex;
+    
     &-container{
+        width: 54rem;
         &__price{
             padding: 2rem 0 0 2rem;
 
@@ -39,5 +40,11 @@
             font-size: 1rem;
         }
     }
+}
+
+.place-order{
+    width: 23rem;
+    margin-left: 1.5rem;
+    margin-right: 2rem;
 }
 

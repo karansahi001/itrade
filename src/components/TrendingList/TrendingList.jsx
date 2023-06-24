@@ -8,7 +8,7 @@ const TrendingList = ({ticker, price, priceChange, percChange}) => {
       <th scope="row" className="fw-normal py-3 align-items-center">{ticker}</th>
       <td className={`py-3 text-center ${priceChange > 0 ? "text-success" : "text-danger"}`}>{priceChange}</td>
       <td className={`py-3 text-center ${percChange > 0 ? "text-success" : "text-danger"}`}>{percChange}%</td>
-      <td className="py-3 text-center">${price}</td>
+      <td className="py-3 text-center">${price.toFixed(2)}</td>
     </tr>
     </LinkContainer>
   )

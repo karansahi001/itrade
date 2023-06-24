@@ -20,9 +20,9 @@ const StockChart = ({ ticker }) => {
     }
     const interval = setInterval(() => {
       // Code to be executed every 5 minutes
-      // fetch();
+      // fetch();   *************** uncomment this too *****************
     }, 5 * 60 * 1000); // 5 minutes i
-    // fetch();
+    // fetch(); ****************** just uncomment this ******************
     return () => clearInterval(interval);
   }, [apiUrl, ticker])
 

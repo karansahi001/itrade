@@ -11,7 +11,7 @@ const NewsCard = ({image, title, source}) => {
         <div className="col-md-8">
           <div className="card-body ms-1">
             <h5 className="card-title">{title.slice(0, 25)}...</h5>
-            <p className="card-text"><small className="text-body-secondary">Source: {source}</small></p>
+            <p className="card-text"><small className="text-body-secondary fw-normal">Source: {source}</small></p>
           </div>
         </div>
       </div>

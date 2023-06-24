@@ -1,26 +1,25 @@
 // import axios from 'axios'
-// import React, { useEffect } from 'react'
-// import { auth } from '../../config/firebase';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { auth, db } from '../../config/firebase';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
+import { getDocs, collection, doc } from "firebase/firestore";
 
 const Homepage = () => {
   // const apiUrl = process.env.REACT_APP_API_URL;
   const dispatch = useDispatch();
-
-  dispatch(updateNav("home"));
+  const currentUser = useSelector(state => state.user.currentUser)
+  const portfolioRef = collection(db, "stocks")
   
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`${apiUrl}/stocks`)
-  //       console.log(response.data.tickers)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   fetchData();
-  // }, [apiUrl])
+  useEffect(() => {
+    dispatch(updateNav("home"));
+    
+  },[])
+  // console.log(user)
+  
+  useEffect(() => {
+   
+  }, [])
 
 
   return (

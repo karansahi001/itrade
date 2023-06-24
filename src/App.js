@@ -1,6 +1,7 @@
 import {
-  createBrowserRouter,
-  RouterProvider,
+  BrowserRouter,
+  Route,
+  Routes,
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
@@ -10,6 +11,8 @@ import SignUp from "./pages/Signup/Signup";
 import TrendingStocks from "./pages/TrendingStocks/TrendingStocks";
 import Navbar from "./components/Navbar/Navbar";
 import SingleStock from "./pages/SingleStock/SingleStock";
+import UserComponent from "./pages/UserComponent";
+import Portfolio from "./pages/Portfolio/Portfolio";
 
 function App() {
 
@@ -33,33 +36,20 @@ function App() {
     },
   });
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Homepage />,
-    },
-    {
-      path: "/trending",
-      element: <TrendingStocks />,
-    },
-    {
-      path: "/signin",
-      element: <SignIn />,
-    },
-    {
-      path: "/signup",
-      element: <SignUp />,
-    },
-    {
-      path: "/stocks/:ticker",
-      element: <SingleStock />,
-    },
-  ]);
-
   return (
     <ThemeProvider theme={theme}>
+      <BrowserRouter>
       <Navbar />
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path= "/" element={ <Homepage />} />
+        <Route path= "/trending" element={ <TrendingStocks />} />
+        <Route path= "/signin" element={ <SignIn />} />
+        <Route path= "/signup" element={ <SignUp />} />
+        <Route path= "/stocks/:ticker" element={ <SingleStock />} />
+        <Route path= "/test" element={ <UserComponent />} />
+        <Route path= "/portfolio" element={ <Portfolio />} />
+      </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

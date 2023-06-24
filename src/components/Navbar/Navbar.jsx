@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material'
 import './Navbar.scss';
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap'
 import { useNavigate } from 'react-router-dom'
@@ -9,17 +9,17 @@ import { signOut } from 'firebase/auth';
 
 
 const Navbar = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const activeNav = useSelector((state) => state.nav.value)
   const handleLogout = async () => {
-    try{
+    try {
       await signOut(auth);
       navigate("/");
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
-  
+
   return (
     <AppBar position="static" sx={{ bgcolor: 'white', color: 'primary.main', boxShadow: 'none' }}>
       <Toolbar sx={{ paddingTop: 2 }}>
@@ -41,16 +41,18 @@ const Navbar = () => {
               Trending Stocks
             </Button>
           </LinkContainer>
-          <LinkContainer to="/portfolio">
-            <Button
-              color='inherit'
-              className={`nav__btn ${activeNav === 'portfolio' ? `nav__btn--active` : ``}`}>
-              My Portfolio
-            </Button>
-          </LinkContainer>
           {
             auth.currentUser ?
-              <Button color='inherit' onClick={handleLogout}>Logout</Button>
+              <>
+                <LinkContainer to="/portfolio">
+                  <Button
+                    color='inherit'
+                    className={`nav__btn ${activeNav === 'portfolio' ? `nav__btn--active` : ``}`}>
+                    My Portfolio
+                  </Button>
+                </LinkContainer>
+                <Button color='inherit' onClick={handleLogout}>Logout</Button>
+              </>
               :
               <>
                 <LinkContainer to="/signin">

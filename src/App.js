@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar/Navbar";
 import SingleStock from "./pages/SingleStock/SingleStock";
 import UserComponent from "./pages/UserComponent";
 import Portfolio from "./pages/Portfolio/Portfolio";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         <Route path= "/stocks/:ticker" element={ <SingleStock />} />
         <Route path= "/test" element={ <UserComponent />} />
         <Route path= "/portfolio" element={ <Portfolio />} />
+        <Route path="*" element={ <NotFound />} />
       </Routes>
       </BrowserRouter>
     </ThemeProvider>

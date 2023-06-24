@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { auth, db } from '../../config/firebase';
 import { addDoc, collection } from "firebase/firestore";
 import StickyBox from "react-sticky-box";
-import {LinkContainer} from 'react-router-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import './PlaceOrder.scss'
 
-const PlaceOrder = ({ ticker, currentPrice }) => {
+const PlaceOrder = ({ ticker, currentPrice, currentStock }) => {
   const [numShares, setNumShares] = useState("");
   const databaseRef = collection(db, "stocks");
   const userId = auth.currentUser?.uid;
@@ -23,7 +23,7 @@ const PlaceOrder = ({ ticker, currentPrice }) => {
       console.log(err)
     }
   }
-  if(userId){
+  if (userId) {
     return (
       <StickyBox offsetTop={20} offsetBottom={20}>
         <section className="place-order-sec">
@@ -49,13 +49,24 @@ const PlaceOrder = ({ ticker, currentPrice }) => {
               onClick={handleOrder}>
               Buy {ticker}
             </Button>
+            {
+              currentStock ?
+                <Button
+                  className="mt-4"
+                  variant="contained"
+                  sx={{ bgcolor: "secondary.main", width: "100%" }}
+                  onClick={handleOrder}>
+                  Sell {ticker}
+                </Button>
+                : <></>
+            }
           </Paper>
         </section>
       </ StickyBox>
     )
-  } 
-  else{
-    return(
+  }
+  else {
+    return (
       <StickyBox offsetTop={20} offsetBottom={20}>
         <section className="place-order-sec">
           <h5 className="text-secondary place-order-sec__head">Place Order:</h5>
@@ -66,7 +77,7 @@ const PlaceOrder = ({ ticker, currentPrice }) => {
                 className="place-order-num__input"
                 type="number"
                 placeholder='0'
-                value={numShares}
+                defaultValue={numShares}
               />
             </div>
             <h5 className="place-order__cost fw-normal">Estimated Cost:

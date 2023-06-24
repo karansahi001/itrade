@@ -20,15 +20,15 @@ const StockChart = ({ ticker }) => {
     }
     const interval = setInterval(() => {
       // Code to be executed every 5 minutes
-      // fetch();   *************** uncomment this too *****************
+      // fetch();   //*************** uncomment this too *****************
     }, 5 * 60 * 1000); // 5 minutes i
-    // fetch(); ****************** just uncomment this ******************
+    // fetch(); //****************** just uncomment this ******************
     return () => clearInterval(interval);
   }, [apiUrl, ticker])
 
   return (
     // style={{ width: "68vw" }}
-    <div className="container mt-5" >
+    <div className="container mt-5" style={{ width: "100%" }}>
       <div className="row text-center">
         {/* <div className="col-12 mb-5">
           {cdays.map((cday) => {

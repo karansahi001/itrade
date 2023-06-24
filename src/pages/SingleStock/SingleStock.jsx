@@ -9,6 +9,7 @@ import SingleNews from '../../components/SingleNews/SingleNews';
 import PlaceOrder from '../../components/PlaceOrder/PlaceOrder';
 import imgPlaceholder from '../../assets/placeholder-image.jpg';
 import { auth } from '../../config/firebase';
+import { useSelector } from 'react-redux';
 
 const SingleStock = () => {
   const [stockData, setStockData] = useState([]);
@@ -16,11 +17,14 @@ const SingleStock = () => {
   const [newsData, setNewsData] = useState([]);
   const [additData, setAdditData] = useState("");
   const [imageData, setImageData] = useState("");
+  const [currentStock, setCurrentStock] = useState([]);
+  const portfolio = useSelector(state => state.portfolio.value)
   const params = useParams();
-  const ticker = params.ticker;
   const apiUrl = process.env.REACT_APP_API_URL;
   const imageApi = process.env.REACT_APP_IMAGE_API;
   const userId = auth.currentUser?.uid;
+  const ticker = params.ticker;
+  const [findStock, setFindStock] = useState([]);
 
 
   useEffect(() => {
@@ -79,6 +83,13 @@ const SingleStock = () => {
       }
     }
 
+    if(portfolio.length > 0){
+      setFindStock(portfolio.find(stock => stock.ticker === ticker))
+      if(findStock){
+        setCurrentStock(findStock);
+      }
+    }
+
     fetchData();
     fetchPriceData();
     fetchAdditionalData();
@@ -86,6 +97,7 @@ const SingleStock = () => {
 
   }, [apiUrl, ticker, imageApi]);
 
+// console.log(findStock)
   return (
     <main className="single-stock">
       <section className="single-section">
@@ -105,7 +117,12 @@ const SingleStock = () => {
           <StockChart ticker={ticker} />
         </Paper>
         <div className="sticky__sidebar">
-        <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)} /> 
+          {
+            findStock ?
+            <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)} currentStock={currentStock} /> 
+            :
+            <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)}  /> 
+          }
         </div>
       </section>
       <AdditDetails 
@@ -115,8 +132,14 @@ const SingleStock = () => {
         weekHigh={additData["52WeekHigh"]}
         weekLow={additData["52WeekLow"]}
         sector={additData.Sector}
+        ticker={ticker}
+        description={stockData.description}
         />
-        <SingleNews newsData={newsData} />
+      <SingleNews 
+        newsData={newsData} 
+        ticker={ticker}
+        description={stockData.description}
+      />
     </main>
   )
 }

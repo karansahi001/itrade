@@ -11,7 +11,6 @@ import NotFound from '../NotFound/NotFound';
 import { updatePortfolio } from '../../redux/portfolioSlice';
 
 const Portfolio = () => {
-  const [portfolioData, setPortfolioData] = useState([])
   const [currentPriceData, setCurrentPriceData] = useState([])
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.user.currentUser)
@@ -27,7 +26,6 @@ const Portfolio = () => {
       try {
         const data = await getDocs(q);
         const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        setPortfolioData(filteredData)
         const tickersList = filteredData.map(item => item.ticker).join(",")
         const currentData = await axios.get(`${apiUrl}/stock-data/${tickersList}`)
         const joinData = filteredData.map(obj1 => {

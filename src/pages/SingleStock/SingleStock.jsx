@@ -8,8 +8,9 @@ import AdditDetails from '../../components/AdditDetails/AdditDetails';
 import SingleNews from '../../components/SingleNews/SingleNews';
 import PlaceOrder from '../../components/PlaceOrder/PlaceOrder';
 import imgPlaceholder from '../../assets/placeholder-image.jpg';
-import { auth } from '../../config/firebase';
+// import { auth, query, where, getDocs, collection } from '../../config/firebase';
 import { useSelector } from 'react-redux';
+
 
 const SingleStock = () => {
   const [stockData, setStockData] = useState([]);
@@ -17,15 +18,13 @@ const SingleStock = () => {
   const [newsData, setNewsData] = useState([]);
   const [additData, setAdditData] = useState("");
   const [imageData, setImageData] = useState("");
-  const [currentStock, setCurrentStock] = useState([]);
+  const [currentStock, setCurrentStock] = useState("");
   const portfolio = useSelector(state => state.portfolio.value)
   const params = useParams();
   const apiUrl = process.env.REACT_APP_API_URL;
   const imageApi = process.env.REACT_APP_IMAGE_API;
-  const userId = auth.currentUser?.uid;
   const ticker = params.ticker;
-  const [findStock, setFindStock] = useState([]);
-
+  const [findStock, setFindStock] = useState("");
 
   useEffect(() => {
     const fetchPriceData = async () => {
@@ -83,11 +82,11 @@ const SingleStock = () => {
       }
     }
 
-    if(portfolio.length > 0){
+    if (portfolio.length > 0) {
       setFindStock(portfolio.find(stock => stock.ticker === ticker))
-      if(findStock){
-        setCurrentStock(findStock);
-      }
+      // if(findStock){
+      //   setCurrentStock(findStock);
+      // }
     }
 
     fetchData();
@@ -97,13 +96,13 @@ const SingleStock = () => {
 
   }, [apiUrl, ticker, imageApi]);
 
-// console.log(findStock)
+  // console.log(findStock)
   return (
     <main className="single-stock">
       <section className="single-section">
-        {imageData ? 
+        {imageData ?
           <img className="single-section__icon" src={imageData || imgPlaceholder} alt={ticker} /> :
-          <img width="5%" src={imgPlaceholder} alt={ticker} /> 
+          <img width="5%" src={imgPlaceholder} alt={ticker} />
         }
         <h2 className="single-section__ticker">{ticker}</h2>
         <h2 className="single-section__name text-secondary">{stockData?.name}</h2>
@@ -117,26 +116,21 @@ const SingleStock = () => {
           <StockChart ticker={ticker} />
         </Paper>
         <div className="sticky__sidebar">
-          {
-            findStock ?
-            <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)} currentStock={currentStock} /> 
-            :
-            <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)}  /> 
-          }
+          <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)} currentStock={findStock} setCurrentStock={setFindStock} />
         </div>
       </section>
-      <AdditDetails 
-        marketCap = {additData.MarketCapitalization}
+      <AdditDetails
+        marketCap={additData.MarketCapitalization}
         eps={additData.EPS}
-        divYield= {additData.DividendYield}
+        divYield={additData.DividendYield}
         weekHigh={additData["52WeekHigh"]}
         weekLow={additData["52WeekLow"]}
         sector={additData.Sector}
         ticker={ticker}
         description={stockData.description}
-        />
-      <SingleNews 
-        newsData={newsData} 
+      />
+      <SingleNews
+        newsData={newsData}
         ticker={ticker}
         description={stockData.description}
       />

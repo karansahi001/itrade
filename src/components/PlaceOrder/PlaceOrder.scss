@@ -1,42 +1,59 @@
 @use '../../styles/partials/variables' as *;
 
-.place-order-sec{
+.place-order-sec {
     margin-top: -2rem;
 
-    &__head{
+    &__head {
         margin-left: 1.5rem;
     }
 }
 
-.place-order{
+.place-order {
     width: 28rem;
     margin-left: 1.5rem;
     margin-right: 2rem;
     padding: 2rem 2rem;
 
-    &-num{
+    &-num {
         display: flex;
         align-items: center;
 
-        &__text{
+        &__text {
             margin-right: 1rem;
             margin-top: 0.2rem;
 
         }
 
-        &__input{
+        &__input {
             padding: 0.5rem;
             font-size: 1rem;
             font-weight: 300;
-            &:focus{
+
+            &:focus {
                 outline-color: $secondary;
             }
 
         }
     }
 
-    &__cost{
+    &__cost {
         margin-top: 2rem;
     }
-    
+
+}
+
+.sell-order__own{
+    margin-top: 2rem;
+}
+
+.sell-order__input {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+
+    &:focus {
+        outline-color: $secondary;
+    }
 }

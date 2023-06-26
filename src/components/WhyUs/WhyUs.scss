@@ -1,0 +1,9 @@
+@use '../../styles/partials/variables' as *;
+
+.bg-green{
+    background-color: $secondary;
+}
+
+.text-green{
+    color: $secondary;
+}

@@ -71,7 +71,7 @@ const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock }) => 
               <span className="fw-light ms-4">${(numShares * currentPrice).toLocaleString("en-US")} usd</span>
             </h5>
             <Button
-              className="mt-4"
+              className="mt-4 text-light"
               variant="contained"
               sx={{ bgcolor: "secondary.main", width: "100%" }}
               onClick={handleOrder}>
@@ -89,7 +89,7 @@ const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock }) => 
                     onChange={(e) => setSellShares(Number(e.target.value))}
                   />
                   <Button
-                    className="mt-4"
+                    className="mt-4 text-light"
                     variant="contained"
                     sx={{ bgcolor: "danger.main", width: "100%" }}
                     onClick={() => handleSell(currentStock.id)}
@@ -126,7 +126,7 @@ const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock }) => 
               <Button
                 className="mt-4"
                 variant="contained"
-                sx={{ bgcolor: "danger.main", width: "100%" }}>
+                sx={{ bgcolor: "danger.main", width: "100%", color: "white" }}>
                 Login to Place an Order
               </Button>
             </LinkContainer>

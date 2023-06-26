@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Paper, Typography } from '@mui/material';
+import { Container, Paper, Typography } from '@mui/material';
 import TrendingList from '../../components/TrendingList/TrendingList';
 import NewsCard from '../../components/NewsCard/NewsCard';
 import './TrendingStocks.scss'

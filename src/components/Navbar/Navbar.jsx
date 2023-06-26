@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Stack, Button } from '@mui/material'
+import { AppBar, Toolbar, Typography, Stack, Button, Container } from '@mui/material'
 import './Navbar.scss';
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
@@ -39,6 +39,13 @@ const Navbar = () => {
               color='inherit'
               className={`nav__btn ${activeNav === 'trending' ? `nav__btn--active` : ``}`}>
               Trending Stocks
+            </Button>
+          </LinkContainer>
+          <LinkContainer to="/find-stocks">
+            <Button
+              color='inherit'
+              className={`nav__btn ${activeNav === 'find' ? `nav__btn--active` : ``}`}>
+              Find Stocks
             </Button>
           </LinkContainer>
           {

@@ -14,13 +14,15 @@ import SingleStock from "./pages/SingleStock/SingleStock";
 import UserComponent from "./pages/UserComponent";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import NotFound from "./pages/NotFound/NotFound";
+import Footer from "./components/Footer/Footer";
+import FindStocks from "./pages/FindStocks/FindStocks";
 
 function App() {
 
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#145952",
+        main: "#41A693",
       },
       secondary: {
         main: "#41A693",
@@ -49,8 +51,10 @@ function App() {
         <Route path= "/stocks/:ticker" element={ <SingleStock />} />
         <Route path= "/test" element={ <UserComponent />} />
         <Route path= "/portfolio" element={ <Portfolio />} />
+        <Route path= "/find-stocks" element={ <FindStocks />} />
         <Route path="*" element={ <NotFound />} />
       </Routes>
+      <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );

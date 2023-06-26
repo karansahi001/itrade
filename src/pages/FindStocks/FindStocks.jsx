@@ -1,19 +1,21 @@
-import { Container, Paper, Typography } from '@mui/material';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { updateNav } from '../../redux/navSlice';
 import Pagination from '../../components/Pagination/Pagination';
 import TrendingList from '../../components/TrendingList/TrendingList';
-import { updateNav } from '../../redux/navSlice';
+import { Container, IconButton, InputAdornment, Paper, SvgIcon, Typography } from '@mui/material';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import SearchIcon from '@mui/icons-material/Search';
 
 const FindStocks = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [stocksAllData, setStocksAllData] = useState([]);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [pageData, setPageData] = useState([]);
   const [pageSize] = useState(25);
   const [currentPage, setCurrentPage] = useState(1);
-  const page = 1;
+  const [search,setSearch] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -48,13 +50,34 @@ const FindStocks = () => {
     setPageData(slicedData);
   };
 
+  const handleSearch = () => {
+    return stocksAllData.filter(
+      (coin) =>
+        coin.ticker.toLowerCase().includes(search)
+    );
+  }
+
   return (
     // className="trending-stocks"
     <Container sx={{ marginTop: "2rem" }}>
       <Paper elevation={3} sx={{ padding: "2rem" }}>
-        <Typography variant="h4" sx={{ color: "primary.main" }}>All Stocks:</Typography>
-        <hr style={{ marginBottom: "3rem" }} />
+        <Typography variant="h4" sx={{ color: "primary.main" }} mb={4}>All Stocks:</Typography>
         <section>
+          <OutlinedInput
+            onChange={(e) => setSearch(e.target.value)} 
+            value={search}
+            placeholder="Search any Stock Ticker"
+            fullWidth={true}
+            startAdornment={
+              <InputAdornment position="start">
+                <IconButton edge="start">
+                  <SearchIcon />
+                </IconButton>
+              </InputAdornment>
+            }
+            >
+          <SvgIcon searchIcon={SearchIcon}></SvgIcon>
+          </OutlinedInput>
           <table className="table table-hover align-items-center mt-4">
             <thead className="table-striped text-center text-info">
               <tr>
@@ -78,7 +101,8 @@ const FindStocks = () => {
                 // })
               }
               {
-                stocksAllData
+                // stocksAllData
+                handleSearch()
                   .slice((currentPage * pageSize) - pageSize, currentPage * pageSize)
                   .map((stock) => {
                     return (

@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAQFXLbaTu56rwDdI1oLb1C_Ac55_YNdQM",
+  apiKey: process.env.REACT_APP_FB_API,
   authDomain: "itrade-a9aa1.firebaseapp.com",
   projectId: "itrade-a9aa1",
   storageBucket: "itrade-a9aa1.appspot.com",

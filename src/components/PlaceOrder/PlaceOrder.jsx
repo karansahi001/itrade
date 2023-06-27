@@ -1,27 +1,16 @@
-import { Button, Paper } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
 import { auth, db } from '../../config/firebase';
 import { addDoc, collection, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import StickyBox from "react-sticky-box";
+import { Button, Paper } from '@mui/material';
 import { LinkContainer } from 'react-router-bootstrap';
-import './PlaceOrder.scss'
+import './PlaceOrder.scss';
 
-const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock }) => {
+const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock, setShowOrderModal, setShowSellModal }) => {
   const [numShares, setNumShares] = useState("");
   const [sellShares, setSellShares] = useState("");
   const databaseRef = collection(db, "stocks");
   const userId = auth.currentUser?.uid;
-  const [ownShares, setOwnShares] = useState("");
-
-  // useEffect(() => {
-  //   if(currentStock){
-  //     const findCurrent = currentStock;
-  //     setOwnShares(findCurrent.qty)
-  //   }
-
-  // }, [])
-
-  // console.log(currentStock)
 
   const handleOrder = async () => {
     try {
@@ -30,7 +19,8 @@ const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock }) => 
         qty: numShares,
         ticker: ticker,
         user_id: userId
-      })
+      });
+      setShowOrderModal(true);
     } catch (err) {
       console.log(err)
     }
@@ -42,12 +32,13 @@ const PlaceOrder = ({ ticker, currentPrice, currentStock, setCurrentStock }) => 
    if(updatedQty < 0){
      console.log(`You only own ${currentStock.qty} shares`)
   }else if(updatedQty == 0){
-    console.log(`You sold all shares`)
     await deleteDoc(getStock)
     setCurrentStock("");
+    setShowSellModal(true)
   }else{
      console.log(updatedQty)
      await updateDoc(getStock, {qty: updatedQty})
+     setShowSellModal(true)
    }
   }
 

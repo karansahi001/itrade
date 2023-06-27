@@ -1,7 +1,6 @@
-import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 
-export default function NotFound() {
+const NotFound = () =>  {
   return (
     <Box
       sx={{
@@ -23,3 +22,5 @@ export default function NotFound() {
     </Box>
   );
 }
+
+export default NotFound;

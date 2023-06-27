@@ -1,50 +1,64 @@
 import { useEffect, useState } from 'react';
-import { auth } from '../../config/firebase'
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../../config/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import SigninModal from '../../components/SigninModal/SigninModal';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="/">
-        iTrade
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePassword = (password) => {
+  return password.length >= 6;
+};
 
 export default function SignUp() {
-
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPassword] = useState("");
+  const [showEmailError, setShowEmailError] = useState(false);
+  const [showPasswordError, setShowPasswordError] = useState(false);
+  const [open, setOpen] = useState(false);
+  
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(updateNav("signup"));
-  }, [])
+  }, []);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    if (auth.currentUser) {
+      navigate("/");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      await createUserWithEmailAndPassword(auth, email, pass);
-    }catch(err){
-      console.log(err);
+
+    const isEmailValid = validateEmail(email);
+    const isPasswordValid = validatePassword(password);
+
+    setShowEmailError(!isEmailValid);
+    setShowPasswordError(!isPasswordValid);
+
+    if (isEmailValid && isPasswordValid) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        handleOpen();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -71,7 +85,6 @@ export default function SignUp() {
               <TextField
                 autoComplete="given-name"
                 name="firstName"
-                required
                 fullWidth
                 id="firstName"
                 label="First Name"
@@ -80,7 +93,6 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                required
                 fullWidth
                 id="lastName"
                 label="Last Name"
@@ -98,12 +110,18 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                error={showEmailError}
+                helperText={
+                  showEmailError
+                    ? "Please enter a valid email"
+                    : ""
+                }
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 fullWidth
                 name="password"
@@ -111,6 +129,12 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                error={showPasswordError}
+                helperText={
+                  showPasswordError
+                    ? "Password should contain a minimum of 6 characters"
+                    : ""
+                }
               />
             </Grid>
             <Grid item xs={12}>
@@ -124,7 +148,7 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, color:"white" }}
+            sx={{ mt: 3, mb: 2, color: "white" }}
           >
             Sign Up
           </Button>
@@ -137,7 +161,13 @@ export default function SignUp() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
+      <SigninModal
+        open={open}
+        title={"Sign Up Successful"}
+        description={"You have successfully signed up."}
+        handleClose={handleClose}
+        modalIcon={<CheckCircleOutlineIcon sx={{ fontSize: "9rem", color: "primary.main", marginBottom: "1.4rem" }} />}
+      />
     </Container>
   );
 }

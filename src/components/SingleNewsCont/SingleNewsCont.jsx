@@ -1,4 +1,3 @@
-
 import "./SingleNewsCont.scss"
 
 const SingleNewsCont = ({ url, newsImage, title, source }) => {

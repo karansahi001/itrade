@@ -1,21 +1,16 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import './App.css';
 import Homepage from './pages/Homepage/Homepage';
 import SignIn from "./pages/Signin/Signin";
 import SignUp from "./pages/Signup/Signup";
 import TrendingStocks from "./pages/TrendingStocks/TrendingStocks";
 import Navbar from "./components/Navbar/Navbar";
 import SingleStock from "./pages/SingleStock/SingleStock";
-import UserComponent from "./pages/UserComponent";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import NotFound from "./pages/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 import FindStocks from "./pages/FindStocks/FindStocks";
+import './App.scss';
 
 function App() {
 
@@ -49,7 +44,6 @@ function App() {
         <Route path= "/signin" element={ <SignIn />} />
         <Route path= "/signup" element={ <SignUp />} />
         <Route path= "/stocks/:ticker" element={ <SingleStock />} />
-        <Route path= "/test" element={ <UserComponent />} />
         <Route path= "/portfolio" element={ <Portfolio />} />
         <Route path= "/find-stocks" element={ <FindStocks />} />
         <Route path="*" element={ <NotFound />} />

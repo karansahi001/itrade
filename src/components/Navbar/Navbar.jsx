@@ -1,12 +1,12 @@
-import { AppBar, Toolbar, Typography, Stack, Button, Container } from '@mui/material'
-import './Navbar.scss';
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
-
+import { auth } from '../../config/firebase';
+import { useSelector } from 'react-redux';
+import { AppBar, Toolbar, Typography, Stack, Button, Container } from '@mui/material'
+import { LinkContainer } from 'react-router-bootstrap'
+import Logo from "../../assets/itrade-logo.png";
+import './Navbar.scss';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -24,7 +24,9 @@ const Navbar = () => {
     <AppBar position="static" sx={{ bgcolor: 'white', color: 'primary.main', boxShadow: 'none' }}>
       <Toolbar sx={{ paddingTop: 2 }}>
         <Typography variant="h4" component="div" sx={{ paddingLeft: 2, flexGrow: 1 }}>
-          iTrade
+          <LinkContainer to="/">
+            <img src={Logo} alt="iTrade logo" className="nav__logo" />
+          </LinkContainer>
         </Typography>
         <Stack direction="row" spacing={4} sx={{ paddingRight: 2 }}>
           <LinkContainer to="/">

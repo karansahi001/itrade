@@ -1,6 +1,4 @@
 import { Paper } from '@mui/material'
-import React from 'react'
-import StickyBox from "react-sticky-box";
 import './AdditDetails.scss'
 
 const AdditDetails = ({ marketCap, eps, divYield, weekHigh, weekLow, sector, ticker, description }) => {
@@ -35,15 +33,6 @@ const AdditDetails = ({ marketCap, eps, divYield, weekHigh, weekLow, sector, tic
           </section>
         </Paper>
       </div>
-      
-      {/* <div className="market-details__about">
-      <StickyBox offsetTop={20} offsetBottom={20}>
-        <h5 className="text-secondary">About {ticker}:</h5>
-        <Paper elevation={3} className="about-container">
-          <p className="fw-normal">{description}</p>
-        </Paper>
-        </StickyBox>
-      </div> */}
     </section>
   )
 }

@@ -1,15 +1,16 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { Paper, Typography } from '@mui/material';
-import { useParams } from 'react-router-dom'
+import { Paper } from '@mui/material';
+import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import StockChart from '../../components/StockChart/StockChart';
-import './SingleStock.scss'
 import AdditDetails from '../../components/AdditDetails/AdditDetails';
 import SingleNews from '../../components/SingleNews/SingleNews';
 import PlaceOrder from '../../components/PlaceOrder/PlaceOrder';
+import SigninModal from '../../components/SigninModal/SigninModal';
 import imgPlaceholder from '../../assets/placeholder-image.jpg';
-// import { auth, query, where, getDocs, collection } from '../../config/firebase';
-import { useSelector } from 'react-redux';
+import './SingleStock.scss';
 
 
 const SingleStock = () => {
@@ -18,13 +19,19 @@ const SingleStock = () => {
   const [newsData, setNewsData] = useState([]);
   const [additData, setAdditData] = useState("");
   const [imageData, setImageData] = useState("");
-  const [currentStock, setCurrentStock] = useState("");
-  const portfolio = useSelector(state => state.portfolio.value)
+  const [findStock, setFindStock] = useState("");
+  const navigate = useNavigate();
   const params = useParams();
+
+  const portfolio = useSelector(state => state.portfolio.value)
+
   const apiUrl = process.env.REACT_APP_API_URL;
   const imageApi = process.env.REACT_APP_IMAGE_API;
+
   const ticker = params.ticker;
-  const [findStock, setFindStock] = useState("");
+
+  const [showOrderModal, setShowOrderModal] = useState(false);
+  const [showSellModal, setShowSellModal] = useState(false);
 
   useEffect(() => {
     const fetchPriceData = async () => {
@@ -84,9 +91,6 @@ const SingleStock = () => {
 
     if (portfolio.length > 0) {
       setFindStock(portfolio.find(stock => stock.ticker === ticker))
-      // if(findStock){
-      //   setCurrentStock(findStock);
-      // }
     }
 
     fetchData();
@@ -96,7 +100,16 @@ const SingleStock = () => {
 
   }, [apiUrl, ticker, imageApi]);
 
-  // console.log(findStock)
+  const handleCloseOrderModal = () => {
+    setShowOrderModal(false);
+    navigate("/portfolio")
+  };
+  
+  const handleCloseSellModal = () => {
+    setShowSellModal(false);
+    navigate("/portfolio")
+  };
+
   return (
     <main className="single-stock">
       <section className="single-section">
@@ -108,7 +121,7 @@ const SingleStock = () => {
         <h2 className="single-section__name text-secondary">{stockData?.name}</h2>
       </section>
       <section className="chartgraph">
-        <Paper elevation={3} className="chartgraph-container">
+        <Paper elevation={3} className="chartgraph-container" sx={{ paddingBottom: "1rem" }}>
           <h2 className="chartgraph-container__price">${stockPriceData?.day?.c?.toFixed(2)}
             <span className="text-secondary fs-5 ms-2"> USD</span>
           </h2>
@@ -116,7 +129,13 @@ const SingleStock = () => {
           <StockChart ticker={ticker} />
         </Paper>
         <div className="sticky__sidebar">
-          <PlaceOrder ticker={ticker} currentPrice={stockPriceData?.day?.c?.toFixed(2)} currentStock={findStock} setCurrentStock={setFindStock} />
+          <PlaceOrder
+            ticker={ticker}
+            currentPrice={stockPriceData?.day?.c?.toFixed(2)}
+            currentStock={findStock}
+            setCurrentStock={setFindStock}
+            setShowOrderModal={setShowOrderModal}
+            setShowSellModal={setShowSellModal} />
         </div>
       </section>
       <AdditDetails
@@ -133,6 +152,18 @@ const SingleStock = () => {
         newsData={newsData}
         ticker={ticker}
         description={stockData.description}
+      />
+      <SigninModal
+        title="Order Successful"
+        open={showOrderModal}
+        handleClose={handleCloseOrderModal}
+        modalIcon={<CreditScoreOutlinedIcon sx={{ fontSize: "9rem", color: "primary.main", marginBottom: "1.4rem" }} />} 
+      />
+      <SigninModal
+        title="Sell Order Successful"
+        open={showSellModal}
+        handleClose={handleCloseSellModal}
+        modalIcon={<CreditScoreOutlinedIcon sx={{ fontSize: "9rem", color: "danger.main", marginBottom: "1.4rem" }} />} 
       />
     </main>
   )

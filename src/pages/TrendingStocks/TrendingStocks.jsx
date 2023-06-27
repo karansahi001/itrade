@@ -1,12 +1,11 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { Container, Paper, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import TrendingList from '../../components/TrendingList/TrendingList';
 import NewsCard from '../../components/NewsCard/NewsCard';
 import './TrendingStocks.scss'
-import { auth } from '../../config/firebase';
 
 const TrendingStocks = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -36,9 +35,6 @@ const TrendingStocks = () => {
     fetchData();
     fetchNewsData();
   }, [apiUrl])
-
-  // console.log(auth?.currentUser)
-
 
   return (
     <main className="trending">

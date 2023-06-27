@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { updateNav } from '../../redux/navSlice';
-import Pagination from '../../components/Pagination/Pagination';
-import TrendingList from '../../components/TrendingList/TrendingList';
 import { Container, IconButton, InputAdornment, Paper, SvgIcon, Typography } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import SearchIcon from '@mui/icons-material/Search';
+import Pagination from '../../components/Pagination/Pagination';
+import TrendingList from '../../components/TrendingList/TrendingList';
 
 const FindStocks = () => {
+
   const apiUrl = process.env.REACT_APP_API_URL;
+
   const [stocksAllData, setStocksAllData] = useState([]);
-  // const [data, setData] = useState([]);
   const [pageData, setPageData] = useState([]);
-  const [pageSize] = useState(25);
+  const [pageSize] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
   const [search,setSearch] = useState("");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +30,6 @@ const FindStocks = () => {
 
         setStocksAllData(responseData);
 
-        const pages = Math.ceil(responseData.length / pageSize);
         const slicedData = responseData.slice((currentPage * pageSize) - pageSize, currentPage * pageSize);
         setPageData(slicedData);
    
@@ -58,7 +59,6 @@ const FindStocks = () => {
   }
 
   return (
-    // className="trending-stocks"
     <Container sx={{ marginTop: "2rem" }}>
       <Paper elevation={3} sx={{ padding: "2rem" }}>
         <Typography variant="h4" sx={{ color: "primary.main" }} mb={4}>All Stocks:</Typography>
@@ -89,19 +89,6 @@ const FindStocks = () => {
             </thead>
             <tbody className="justify-content-center align-items-center" role='button'>
               {
-                // stocksAlldata
-                // pageData.map((stock) => {
-                //   return <TrendingList
-                //     key={stock.ticker}
-                //     ticker={stock.ticker}
-                //     price={stock.day.c}
-                //     priceChange={stock.todaysChange.toFixed(2)}
-                //     percChange={stock.todaysChangePerc.toFixed(2)}
-                //   />
-                // })
-              }
-              {
-                // stocksAllData
                 handleSearch()
                   .slice((currentPage * pageSize) - pageSize, currentPage * pageSize)
                   .map((stock) => {
@@ -124,7 +111,6 @@ const FindStocks = () => {
           totalPages={Math.ceil(stocksAllData.length / pageSize)}
           onPageChange={handlePageChange}
         />
-
       </Paper>
     </Container>
   )

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-// import { HistoricalChart } from '../api';    api url for getting data
 import axios from 'axios'
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS } from 'chart.js/auto'
 
 const StockChart = ({ ticker }) => {
   const [pricedata, setPricedata] = useState([]);
   const [days, setDays] = useState(1);
+  
   const apiUrl = process.env.REACT_APP_API_URL;
   
   useEffect(() => {
@@ -20,25 +19,18 @@ const StockChart = ({ ticker }) => {
     }
     const interval = setInterval(() => {
       // Code to be executed every 5 minutes
-      // fetch();   //*************** uncomment this too *****************
+      fetch();   
     }, 5 * 60 * 1000); // 5 minutes i
-    // fetch(); //****************** just uncomment this ******************
+    fetch(); 
     return () => clearInterval(interval);
   }, [apiUrl, ticker])
 
   return (
-    // style={{ width: "68vw" }}
     <div className="container mt-5" style={{ width: "100%" }}>
       <div className="row text-center">
-        {/* <div className="col-12 mb-5">
-          {cdays.map((cday) => {
-            return (<button key={cday.value} className="btn btn-outline-info mx-4 px-4 shadow-none" onClick={() => setDays(cday.value)} value={cday.value}>{cday.label}</button>)
-          })}
-        </div> */}
       </div>
       <div className="row">
         <div className="col">
-
           {pricedata &&
             <Line
               data={{

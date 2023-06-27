@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { auth, db } from '../../config/firebase';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateNav } from '../../redux/navSlice';
 import { getDocs, collection, query, where } from "firebase/firestore";
-import PortfolioList from '../../components/PortfolioList/PortfolioList';
-import { Paper, Typography } from '@mui/material';
 import axios from 'axios';
-import './Portfolio.scss'
-import NotFound from '../NotFound/NotFound';
+import { useDispatch } from 'react-redux';
+import { updateNav } from '../../redux/navSlice';
 import { updatePortfolio } from '../../redux/portfolioSlice';
+import { Paper, Typography } from '@mui/material';
+import PortfolioList from '../../components/PortfolioList/PortfolioList';
+import './Portfolio.scss';
 
 const Portfolio = () => {
   const [currentPriceData, setCurrentPriceData] = useState([])
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.user.currentUser)
-  const portfolio = useSelector(state => state.portfolio.value)
+
   const portfolioRef = collection(db, "stocks");
   const uid = auth.currentUser.uid;
   const q = query(portfolioRef, where("user_id", "==", uid))
+
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -33,17 +32,13 @@ const Portfolio = () => {
           return { ...obj1, ...matchingValue }
         })
         setCurrentPriceData(joinData);
-        dispatch(updatePortfolio(joinData))
+        dispatch(updatePortfolio(joinData));
       } catch (err) {
         console.log(err)
       }
     }
     getStocksList();
   }, [])
-
-  // console.log(portfolioData)
-  // console.log(currentPriceData)
-  // console.log(portfolio)
 
   return (
     <main>

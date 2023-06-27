@@ -1,5 +1,5 @@
-import { Paper } from '@mui/material'
-import SingleNewsCont from '../SingleNewsCont/SingleNewsCont'
+import { Paper } from '@mui/material';
+import SingleNewsCont from '../SingleNewsCont/SingleNewsCont';
 import StickyBox from "react-sticky-box";
 import './SingleNews.scss'
 

@@ -4,7 +4,7 @@
   <img src="https://itrade-capstone.netlify.app/static/media/itrade-logo.43ef24fb19122f2c794c.png" alt="logo" width="200" height="auto" />
   <h1>iTrade</h1>
   
-  <p>
+  <p></p>
     A paper trading web app, where beginners can practice stocks trading without risking real money.
   </p>
    

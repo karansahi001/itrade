@@ -7,10 +7,12 @@ import { updateNav } from '../../redux/navSlice';
 import { updatePortfolio } from '../../redux/portfolioSlice';
 import { Paper, Typography } from '@mui/material';
 import PortfolioList from '../../components/PortfolioList/PortfolioList';
+import StocksPlaceholder from '../../components/StocksPlaceholder/StocksPlaceholder';
 import './Portfolio.scss';
 
 const Portfolio = () => {
   const [currentPriceData, setCurrentPriceData] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const portfolioRef = collection(db, "stocks");
@@ -33,6 +35,7 @@ const Portfolio = () => {
         })
         setCurrentPriceData(joinData);
         dispatch(updatePortfolio(joinData));
+        setIsLoading(false)
       } catch (err) {
         console.log(err)
       }
@@ -46,6 +49,10 @@ const Portfolio = () => {
         <Typography variant="h4" sx={{ color: "primary.main" }}>Portfolio:</Typography>
         <hr style={{ marginBottom: "3rem" }} />
         <section>
+          {
+          isLoading ? 
+          <StocksPlaceholder />
+          :
           <table className="table table-hover align-items-center mt-4">
             <thead className="table-striped text-center text-info">
               <tr>
@@ -69,6 +76,7 @@ const Portfolio = () => {
               }
             </tbody>
           </table>
+          }
         </section>
       </Paper>
     </main>

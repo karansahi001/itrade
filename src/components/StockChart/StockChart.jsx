@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS } from 'chart.js/auto';
 
 const StockChart = ({ ticker }) => {
   const [pricedata, setPricedata] = useState([]);
   const [days, setDays] = useState(1);
   
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   useEffect(() => {
     const fetch = async () => {
       try{
@@ -31,7 +32,8 @@ const StockChart = ({ ticker }) => {
       </div>
       <div className="row">
         <div className="col">
-          {pricedata &&
+          {
+          pricedata &&
             <Line
               data={{
                 labels: (pricedata?.t?.map((timestamp) => {
@@ -82,3 +84,6 @@ const StockChart = ({ ticker }) => {
 }
 
 export default StockChart
+
+
+

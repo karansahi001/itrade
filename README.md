@@ -186,9 +186,8 @@ Karanvir Singh- [@linkedin handle](https://www.linkedin.com/in/karanvir-singh-we
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements
 
-Use this section to mention useful resources and libraries that you have used in your projects.
+Some refrences to the Docs of technologies used:
 
- - [Shields.io](https://shields.io/)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
- - [Readme Template](https://github.com/othneildrew/Best-README-Template)
+ - [Netlify](https://docs.netlify.com/)
+ - [Chartjs](https://www.chartjs.org/)
+ - [Redux](https://redux.js.org/)

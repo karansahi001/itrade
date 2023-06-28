@@ -49,7 +49,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" />
+  <img src="https://drive.google.com/file/d/1837SBFqhELvbeVdXmWfSjDcNtnbD2BAI/view?usp=drive_link" alt="screenshot" />
 </div>
 
 

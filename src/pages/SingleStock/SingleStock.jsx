@@ -98,7 +98,7 @@ const SingleStock = () => {
     fetchAdditionalData();
     fetchTickNewsData();
 
-  }, [apiUrl, ticker, imageApi]);
+  }, [apiUrl, ticker, imageApi, portfolio]);
 
   const handleCloseOrderModal = () => {
     setShowOrderModal(false);

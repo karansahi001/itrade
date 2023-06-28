@@ -39,7 +39,7 @@ const TrendingStocks = () => {
     }
     fetchData();
     fetchNewsData();
-  }, [apiUrl])
+  }, [apiUrl, dispatch])
 
   return (
     <main className="trending">

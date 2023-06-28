@@ -30,7 +30,7 @@ export default function SignUp() {
 
   useEffect(() => {
     dispatch(updateNav("signup"));
-  }, []);
+  }, [dispatch]);
 
   const handleOpen = () => {
     setOpen(true);

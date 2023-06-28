@@ -15,7 +15,7 @@ const Homepage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateNav("home"));
-  }, [])
+  }, [dispatch])
 
   return (
     <>

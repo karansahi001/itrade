@@ -42,7 +42,7 @@ function SignIn() {
 
   useEffect(() => {
     dispatch(updateNav("signin"));
-  }, []);
+  }, [dispatch]);
 
   const validateForm = () => {
     let isValid = true;
@@ -78,8 +78,7 @@ function SignIn() {
           }
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+          console.log(error)
           setOpen(true);
         });
     }

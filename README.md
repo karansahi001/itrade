@@ -49,7 +49,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://drive.google.com/file/d/1837SBFqhELvbeVdXmWfSjDcNtnbD2BAI/view?usp=drive_link" alt="screenshot" />
+  <img src="https://www.hackingwizard.com/wp-content/uploads/2023/06/app-screen.png" alt="screenshot" />
 </div>
 
 
@@ -59,63 +59,54 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://nextjs.org/">Next.js</a></li>
     <li><a href="https://reactjs.org/">React.js</a></li>
-    <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
+    <li><a href="https://redux.js.org/">Redux</a></li>
+    <li><a href="https://mui.com/">Material Ui</a></li>
+    <li><a href="https://getbootstrap.com/"></a>Bootstrap</li>
+    <li><a href="https://www.chartjs.org/">Chartjs</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
     <li><a href="https://expressjs.com/">Express.js</a></li>
-    <li><a href="https://go.dev/">Golang</a></li>
-    <li><a href="https://nestjs.com/">Nest.js</a></li>
-    <li><a href="https://socket.io/">SocketIO</a></li>
-    <li><a href="https://www.prisma.io/">Prisma</a></li>    
-    <li><a href="https://www.apollographql.com/">Apollo</a></li>
-    <li><a href="https://graphql.org/">GraphQL</a></li>
+    <li><a href="https://nodejs.org/en">Nodejs</a></li>
+    <li><a href="https://firebase.google.com/">Firebase</a></li>
   </ul>
 </details>
 
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://www.mysql.com/">MySQL</a></li>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-    <li><a href="https://redis.io/">Redis</a></li>
-    <li><a href="https://neo4j.com/">Neo4j</a></li>
-    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
+    <li><a href="https://firebase.google.com/">Firebase</a></li>
   </ul>
 </details>
 
 <details>
 <summary>DevOps</summary>
   <ul>
-    <li><a href="https://www.docker.com/">Docker</a></li>
-    <li><a href="https://www.jenkins.io/">Jenkins</a></li>
-    <li><a href="https://circleci.com/">CircleCLI</a></li>
+    <li><a href="https://www.netlify.com/">Netlify</a></li>
+    <li><a href="https://render.com/">Render</a></li>
   </ul>
 </details>
 
 <!-- Features -->
 ### :dart: Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Buy/ Sell Stocks 
+- Login/ Sign up to save your Portfolio
+- View Stocks Price chart to make your decisions
+- Get Latest News Related to every Stock
 
 <!-- Color Reference -->
 ### :art: Color Reference
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#222831](https://via.placeholder.com/10/222831?text=+) #222831 |
-| Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
-| Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
-| Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
+| Primary Color | ![#41A693](https://via.placeholder.com/10/41A693?text=+) #41A693 |
+| Secondary Color | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
+| Text Color | ![#41A693](https://via.placeholder.com/10/41A693?text=+) #41A693 |
 
 
 <!-- Env Variables -->
@@ -123,9 +114,10 @@
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
+`REACT_APP_API_URL`
+`REACT_APP_IMAGE_API` 
+`REACT_APP_FB_API`
 
-`ANOTHER_API_KEY`
 
 <!-- Getting Started -->
 ## 	:toolbox: Getting Started
@@ -133,16 +125,16 @@ To run this project, you will need to add the following environment variables to
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-This project uses Yarn as package manager
+This project uses NPM as package manager
 
 ```bash
- npm install --global yarn
+ npm install
 ```
 
 <!-- Installation -->
 ### :gear: Installation
 
-Install my-project with npm
+npm install
 
 ```bash
   yarn install my-project

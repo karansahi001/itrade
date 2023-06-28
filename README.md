@@ -32,10 +32,6 @@
   * [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
 - [Roadmap](#compass-roadmap)
-- [Contributing](#wave-contributing)
-  * [Code of Conduct](#scroll-code-of-conduct)
-- [FAQ](#grey_question-faq)
-- [License](#warning-license)
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
 
@@ -127,27 +123,15 @@ To run this project, you will need to add the following environment variables to
 
 This project uses NPM as package manager
 
-```bash
- npm install
-```
 
 <!-- Installation -->
 ### :gear: Installation
 
-npm install
+Install dependencies
 
 ```bash
-  yarn install my-project
+  npm install
   cd my-project
-```
-   
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  yarn test test
 ```
 
 <!-- Run Locally -->
@@ -156,7 +140,7 @@ To run tests, run the following command
 Clone the project
 
 ```bash
-  git clone https://github.com/Louis3797/awesome-readme-template.git
+  git clone git@github.com:karansahi001/itrade.git
 ```
 
 Go to the project directory
@@ -168,13 +152,13 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  yarn install
+  npm install
 ```
 
 Start the server
 
 ```bash
-  yarn start
+  npm start
 ```
 
 
@@ -184,74 +168,21 @@ Start the server
 To deploy this project run
 
 ```bash
-  yarn deploy
-```
-
-
-<!-- Usage -->
-## :eyes: Usage
-
-Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
-
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
+  npm run build
 ```
 
 <!-- Roadmap -->
 ## :compass: Roadmap
 
-* [x] Todo 1
-* [ ] Todo 2
-
-
-<!-- Contributing -->
-## :wave: Contributing
-
-<a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
-</a>
-
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-
-<!-- Code of Conduct -->
-### :scroll: Code of Conduct
-
-Please read the [Code of Conduct](https://github.com/Louis3797/awesome-readme-template/blob/master/CODE_OF_CONDUCT.md)
-
-<!-- FAQ -->
-## :grey_question: FAQ
-
-- Question 1
-
-  + Answer 1
-
-- Question 2
-
-  + Answer 2
-
-
-<!-- License -->
-## :warning: License
-
-Distributed under the no License. See LICENSE.txt for more information.
-
+* [x] Add Loading Animation
+* [ ] Add Icons to buttons where necessary
+* [ ] Add more options to chart
+* [ ] Develop a Watchlist component
 
 <!-- Contact -->
 ## :handshake: Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
-
+Karanvir Singh- [@linkedin handle](https://www.linkedin.com/in/karanvir-singh-webdev/) - linkedin/karanvir-singh-webdev
 
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements

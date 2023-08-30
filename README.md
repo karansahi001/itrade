@@ -1,70 +1,193 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+  <img src="https://itrade-capstone.netlify.app/static/media/itrade-logo.43ef24fb19122f2c794c.png" alt="logo" width="200" height="auto" />
+  <h1>iTrade</h1>
+  
+  <p></p>
+    A paper trading web app, where beginners can practice stocks trading without risking real money.
+  </p>
+   
+<h4>
+    <a href="https://itrade-capstone.netlify.app/">View Live Demo</a>
+</h4>
+</div>
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
+<!-- Table of Contents -->
+# :notebook_with_decorative_cover: Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [About the Project](#star2-about-the-project)
+  * [Screenshots](#camera-screenshots)
+  * [Tech Stack](#space_invader-tech-stack)
+  * [Features](#dart-features)
+  * [Color Reference](#art-color-reference)
+  * [Environment Variables](#key-environment-variables)
+- [Getting Started](#toolbox-getting-started)
+  * [Prerequisites](#bangbang-prerequisites)
+  * [Installation](#gear-installation)
+  * [Running Tests](#test_tube-running-tests)
+  * [Run Locally](#running-run-locally)
+  * [Deployment](#triangular_flag_on_post-deployment)
+- [Roadmap](#compass-roadmap)
+- [Contact](#handshake-contact)
+- [Acknowledgements](#gem-acknowledgements)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  
 
-### `npm test`
+<!-- About the Project -->
+## :star2: About the Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- Screenshots -->
+### :camera: Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<div align="center"> 
+  <img src="https://www.hackingwizard.com/wp-content/uploads/2023/06/app-screen.png" alt="screenshot" />
+</div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- TechStack -->
+### :space_invader: Tech Stack
 
-### `npm run eject`
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://redux.js.org/">Redux</a></li>
+    <li><a href="https://mui.com/">Material Ui</a></li>
+    <li><a href="https://getbootstrap.com/"></a>Bootstrap</li>
+    <li><a href="https://www.chartjs.org/">Chartjs</a></li>
+  </ul>
+</details>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://nodejs.org/en">Nodejs</a></li>
+    <li><a href="https://firebase.google.com/">Firebase</a></li>
+  </ul>
+</details>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<details>
+<summary>Database</summary>
+  <ul>
+    <li><a href="https://firebase.google.com/">Firebase</a></li>
+  </ul>
+</details>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<details>
+<summary>DevOps</summary>
+  <ul>
+    <li><a href="https://www.netlify.com/">Netlify</a></li>
+    <li><a href="https://render.com/">Render</a></li>
+  </ul>
+</details>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- Features -->
+### :dart: Features
 
-## Learn More
+- Buy/ Sell Stocks 
+- Login/ Sign up to save your Portfolio
+- View Stocks Price chart to make your decisions
+- Get Latest News Related to every Stock
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- Color Reference -->
+### :art: Color Reference
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Primary Color | ![#41A693](https://via.placeholder.com/10/41A693?text=+) #41A693 |
+| Secondary Color | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
+| Text Color | ![#41A693](https://via.placeholder.com/10/41A693?text=+) #41A693 |
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- Env Variables -->
+### :key: Environment Variables
 
-### Analyzing the Bundle Size
+To run this project, you will need to add the following environment variables to your .env file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`REACT_APP_API_URL`
+`REACT_APP_IMAGE_API` 
+`REACT_APP_FB_API`
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- Getting Started -->
+## 	:toolbox: Getting Started
 
-### Advanced Configuration
+<!-- Prerequisites -->
+### :bangbang: Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project uses NPM as package manager
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<!-- Installation -->
+### :gear: Installation
 
-### `npm run build` fails to minify
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm install
+  cd my-project
+```
+
+<!-- Run Locally -->
+### :running: Run Locally
+
+Clone the project
+
+```bash
+  git clone git@github.com:karansahi001/itrade.git
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
+
+
+<!-- Deployment -->
+### :triangular_flag_on_post: Deployment
+
+To deploy this project run
+
+```bash
+  npm run build
+```
+
+<!-- Roadmap -->
+## :compass: Roadmap
+
+* [x] Add Loading Animation
+* [ ] Add Icons to buttons where necessary
+* [ ] Add more options to chart
+* [ ] Develop a Watchlist component
+
+<!-- Contact -->
+## :handshake: Contact
+
+Karanvir Singh- [@linkedin handle](https://www.linkedin.com/in/karanvir-singh-webdev/) - linkedin/karanvir-singh-webdev
+
+<!-- Acknowledgments -->
+## :gem: Acknowledgements
+
+Some refrences to the Docs of technologies used:
+
+ - [Netlify](https://docs.netlify.com/)
+ - [Chartjs](https://www.chartjs.org/)
+ - [Redux](https://redux.js.org/)

@@ -22,7 +22,7 @@ const TrendingStocks = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${apiUrl}/stocks`)
-        setData(response.data.tickers)
+        setData(response.data.most_actively_traded)
         setIsLoading(false)
       } catch (err) {
         console.log(err)
@@ -40,6 +40,8 @@ const TrendingStocks = () => {
     fetchData();
     fetchNewsData();
   }, [apiUrl, dispatch])
+  console.log(data)
+  console.log(newsData)
 
   return (
     <main className="trending">
@@ -61,14 +63,14 @@ const TrendingStocks = () => {
                   </tr>
                 </thead>
                 <tbody className="justify-content-center align-items-center" role='button'>
-                  {
-                    data.map((stock) => {
+                 {
+                    data?.map((stock) => {
                       return <TrendingList
                         key={stock.ticker}
                         ticker={stock.ticker}
-                        price={stock.day.c}
-                        priceChange={stock.todaysChange.toFixed(2)}
-                        percChange={stock.todaysChangePerc.toFixed(2)}
+                        price={stock.price}
+                        priceChange={Number(stock.change_amount).toFixed(2)} 
+                        percChange={stock.change_percentage} 
                       />
                     })
                   }
@@ -86,17 +88,18 @@ const TrendingStocks = () => {
               <NewsPlaceholder />
             </>
             :
-            newsData.map((article, index) => {
+            newsData?.feed?.map((article, index) => {
               return (
-                <a key={index} href={article.article_url} target="_blank" className="news-list__item" rel="noreferrer">
+                <a key={index} href={article.url} target="_blank" className="news-list__item" rel="noreferrer">
                   <NewsCard
-                    image={article.image_url}
+                    image={article.banner_image} //image_url
                     title={article.title}
-                    source={article?.publisher?.name}
+                    source={article.source}
                   />
                 </a>
               )
             })
+            // <></>
           }
         </section>
       </Paper>

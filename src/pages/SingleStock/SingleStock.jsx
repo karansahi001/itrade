@@ -37,7 +37,7 @@ const SingleStock = () => {
     const fetchPriceData = async () => {
       try {
         const response = await axios.get(`${apiUrl}/stock-data/${ticker}`)
-        setStockPriceData(response.data.tickers[0])
+        setStockPriceData(response.data)
       } catch (err) {
         console.log(err)
       }
@@ -49,23 +49,23 @@ const SingleStock = () => {
           setStockData(response.data.results)
           return response.data.results
         })
-        .then((res) => {
-          axios.get(res.branding.icon_url, {
-            responseType: 'arraybuffer',
-            headers: {
-              Authorization: `Bearer ${imageApi}`,
-              Accept: 'image/jpeg',
-            },
-          })
-            .then((res) => {
-              const blob = new Blob([res.data], {
-                type: 'image/jpeg',
-              })
+        // .then((res) => {
+        //   axios.get(res.branding.icon_url, {
+        //     responseType: 'arraybuffer',
+        //     headers: {
+        //       Authorization: `Bearer ${imageApi}`,
+        //       Accept: 'image/jpeg',
+        //     },
+        //   })
+        //     .then((res) => {
+        //       const blob = new Blob([res.data], {
+        //         type: 'image/jpeg',
+        //       })
 
-              const objectURL = URL.createObjectURL(blob)
-              setImageData(objectURL)
-            })
-        })
+        //       const objectURL = URL.createObjectURL(blob)
+        //       setImageData(objectURL)
+        //     })
+        // })
         .catch((err) => {
           console.log(err)
         })
@@ -122,7 +122,7 @@ const SingleStock = () => {
       </section>
       <section className="chartgraph">
         <Paper elevation={3} className="chartgraph-container" sx={{ paddingBottom: "1rem" }}>
-          <h2 className="chartgraph-container__price">${stockPriceData?.day?.c?.toFixed(2)}
+          <h2 className="chartgraph-container__price">${stockPriceData?.c?.toFixed(2)}
             <span className="text-secondary fs-5 ms-2"> USD</span>
           </h2>
           <p className="lead chartgraph-container__lead">Data might be delayed by 15 min</p>
@@ -131,7 +131,7 @@ const SingleStock = () => {
         <div className="sticky__sidebar">
           <PlaceOrder
             ticker={ticker}
-            currentPrice={stockPriceData?.day?.c?.toFixed(2)}
+            currentPrice={stockPriceData?.c?.toFixed(2)}
             currentStock={findStock}
             setCurrentStock={setFindStock}
             setShowOrderModal={setShowOrderModal}
